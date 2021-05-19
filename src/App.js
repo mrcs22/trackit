@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
+import Today from "./components/today/Today";
 import UserContext from "./contexts/UserContext";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Login setUserData={setUserData} />
           </Route>
           <Route path="/cadastro" exact component={Register} />
+          <Route path="/hoje" exact component={Today} />
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
