@@ -6,10 +6,12 @@ import Banner from "../Banner";
 import Input from "../Input";
 import Button from "../Button";
 import StyledLink from "../StyledLink";
+import { useHistory } from "react-router";
 
-export default function Login() {
+export default function Login({ setUserData }) {
   const [inputData, setInputData] = useState({ email: "", password: "" });
   const [isLogging, setIsLogging] = useState(false);
+  const history = useHistory();
 
   return (
     <>
@@ -43,7 +45,6 @@ export default function Login() {
 
   function tryLogin() {
     setIsLogging(true);
-    console.log(inputData);
 
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
@@ -51,11 +52,12 @@ export default function Login() {
     );
 
     promise.then((res) => {
-      console.log(res.data);
+      const { name, image, email, token } = res.data;
+      setUserData({ name, image, email, token });
+      history.push("/hoje");
     });
 
     promise.catch((err) => {
-      console.log(err.response);
       if (err.response.status === 401) alert("Usuário e/ou senha incorretos!");
       else alert("Usuário e/ou senha inválidos!");
 
