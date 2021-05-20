@@ -19,12 +19,12 @@ const Div = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  height: 70px;
+  width: 100%;
+
   position: fixed;
   top: 0;
   left: 0;
-
-  height: 70px;
-  width: 100%;
 
   background-color: #126ba5;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);

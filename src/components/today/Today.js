@@ -1,11 +1,12 @@
 import UserContext from "../../contexts/UserContext";
 import { useContext, useState } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 
 import Header from "../Header";
 import Container from "../Container";
+import DaySummary from "./DaySummary";
 import Menu from "../Menu";
-import { useHistory } from "react-router";
-import axios from "axios";
 
 export default function Today() {
   const context = useContext(UserContext);
@@ -24,6 +25,7 @@ export default function Today() {
   return (
     <Container>
       <Header />
+      <DaySummary percentage="10" />
       <Menu />
     </Container>
   );
@@ -40,7 +42,7 @@ export default function Today() {
     };
 
     const promise = axios.get(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today",
       config
     );
 

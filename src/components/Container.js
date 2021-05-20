@@ -5,4 +5,7 @@ export default styled.div`
   width: 100%;
 
   background-color: #f2f2f2;
+
+  padding: 98px 17px;
+  padding-bottom: 70px;
 `;
