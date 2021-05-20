@@ -18,10 +18,15 @@ export default function Habit(props) {
         <Title>{name}</Title>
         <SubTitle done={done}>
           Sequência atual:
-          <span id="currentSequence">{currentSequence} dias</span>
+          <span id="currentSequence">
+            {currentSequence} {currentSequence === 1 ? "dia" : "dias"}
+          </span>
         </SubTitle>
         <SubTitle isANewRecord={isANewRecord}>
-          Seu record: <span id="highestSequence">{highestSequence} dias</span>
+          Seu record:{" "}
+          <span id="highestSequence">
+            {highestSequence} {highestSequence === 1 ? "dia" : "dias"}
+          </span>
         </SubTitle>
       </div>
       <Button done={done} onClick={toggleHabitCheck}>

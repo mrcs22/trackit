@@ -35,7 +35,9 @@ export default function Today() {
 
   function getPercentage() {
     return habits
-      ? (habits.filter((h) => h.done).length / habits.length).toFixed(2) * 100
+      ? (
+          habits.reduce((a, i) => (i.done ? a + 1 : a), 0) / habits.length
+        ).toFixed(2) * 100
       : 0;
   }
 
