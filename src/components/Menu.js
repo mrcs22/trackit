@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
-export default function Menu() {
+export default function Menu({ percentage }) {
   const history = useHistory();
   return (
     <Div>
@@ -11,7 +11,7 @@ export default function Menu() {
 
       <Button onClick={goToToday}>
         <CircularProgressbar
-          value="50"
+          value={percentage}
           text="Hoje"
           background
           backgroundPadding={6}

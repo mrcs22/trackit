@@ -7,28 +7,37 @@ import Header from "../Header";
 import Container from "../Container";
 import DaySummary from "./DaySummary";
 import Menu from "../Menu";
+import Habits from "./Habits";
 
 export default function Today() {
   const context = useContext(UserContext);
   const history = useHistory();
 
   const [habits, setHabits] = useState(null);
-  console.log(habits);
 
   if (context === null) {
     history.push("/");
     return null;
   }
 
+  const percentage = getPercentage();
+
   fetchHabits();
 
   return (
     <Container>
       <Header />
-      <DaySummary percentage="10" />
-      <Menu />
+      <DaySummary percentage={percentage} />
+      <Habits habits={habits} setHabits={setHabits} />
+      <Menu percentage={percentage} />
     </Container>
   );
+
+  function getPercentage() {
+    return habits
+      ? (habits.filter((h) => h.done).length / habits.length).toFixed(2) * 100
+      : 0;
+  }
 
   function fetchHabits() {
     if (habits !== null) {
