@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## This app can be accessed by clicking <a href="https://epic-bohr-f5dc30.netlify.app">here</a>
+
 ## Available Scripts
 
 In the project directory, you can run:
