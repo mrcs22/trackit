@@ -24,25 +24,26 @@ export default function Habits() {
   fetchHabits();
 
   return (
-    <Container>
+    <>
       <Header />
-      <NewHabit setHabits={setHabits} />
+      <Container>
+        <NewHabit setHabits={setHabits} />
 
-      {habits && habits.length ? "" : <NoHabit />}
+        {habits && habits.length ? "" : <NoHabit />}
 
-      {habits &&
-        habits.map((h) => (
-          <Habit
-            key={h.id}
-            id={h.id}
-            title={h.name}
-            days={h.days}
-            setHabits={setHabits}
-          />
-        ))}
-
+        {habits &&
+          habits.map((h) => (
+            <Habit
+              key={h.id}
+              id={h.id}
+              title={h.name}
+              days={h.days}
+              setHabits={setHabits}
+            />
+          ))}
+      </Container>
       <Menu percentage={context.percentage} />
-    </Container>
+    </>
   );
 
   function fetchHabits() {

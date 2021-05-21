@@ -25,12 +25,14 @@ export default function Today() {
   fetchHabits();
 
   return (
-    <Container>
+    <>
       <Header />
-      <DaySummary percentage={percentage} />
-      <Habits habits={habits} setHabits={setHabits} />
+      <Container>
+        <DaySummary percentage={percentage} />
+        <Habits habits={habits} setHabits={setHabits} />
+      </Container>
       <Menu percentage={percentage} />
-    </Container>
+    </>
   );
 
   function getPercentage() {
