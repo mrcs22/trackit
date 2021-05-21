@@ -11,6 +11,8 @@ import Menu from "../Menu";
 import NewHabit from "./NewHabit";
 import NoHabit from "./NoHabit";
 import Habit from "./Habit";
+
+import PuffLoader from "./Loader";
 export default function Habits() {
   const context = useContext(UserContext);
   const history = useHistory();
@@ -29,7 +31,7 @@ export default function Habits() {
       <Container>
         <NewHabit setHabits={setHabits} />
 
-        {habits && habits.length ? "" : <NoHabit />}
+        {habits === null ? <PuffLoader /> : habits.length ? "" : <NoHabit />}
 
         {habits &&
           habits.map((h) => (

@@ -1,6 +1,7 @@
 import UserContext from "../../contexts/UserContext";
 import { useContext, useState } from "react";
 import styled from "styled-components";
+import Loader from "react-loader-spinner";
 
 import check from "../../images/check.svg";
 import axios from "axios";
@@ -30,7 +31,7 @@ export default function Habit(props) {
         </SubTitle>
       </div>
       <Button done={done} onClick={toggleHabitCheck}>
-        <img src={check} alt="Concluído" />
+        {isTogglingHabitCheck ? ThreeDots : <img src={check} alt="Concluído" />}
       </Button>
     </Div>
   );
@@ -138,3 +139,7 @@ const Button = styled.button`
     width: 35px;
   }
 `;
+
+const ThreeDots = (
+  <Loader type="ThreeDots" color="#FFF" height={13} width={51} />
+);

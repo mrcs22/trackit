@@ -14,4 +14,8 @@ const P = styled.p`
   color: #666;
 
   margin-top: 9px;
+
+  max-width: 341px;
+
+  margin-top: 19px;
 `;

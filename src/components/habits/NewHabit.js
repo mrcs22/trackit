@@ -24,6 +24,7 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 341px;
 `;
 
 const P = styled.p`
