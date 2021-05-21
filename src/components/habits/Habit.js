@@ -21,6 +21,12 @@ export default function Habit({ title, days, id, setHabits }) {
     </Div>
   );
   function deleteHabit() {
+    const shouldContinue = window.confirm(
+      "Tem certeza que quer excluir este hábito?"
+    );
+
+    if (!shouldContinue) return;
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

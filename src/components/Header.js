@@ -31,6 +31,8 @@ const Div = styled.div`
 
   padding: 0 18px;
 
+  z-index: 100;
+
   img:first-child {
     height: 49px;
     width: 97px;

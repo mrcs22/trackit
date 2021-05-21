@@ -11,7 +11,6 @@ import Menu from "../Menu";
 import NewHabit from "./NewHabit";
 import NoHabit from "./NoHabit";
 import Habit from "./Habit";
-
 export default function Habits() {
   const context = useContext(UserContext);
   const history = useHistory();
@@ -23,12 +22,12 @@ export default function Habits() {
   }
 
   fetchHabits();
-  console.log(habits);
 
   return (
     <Container>
       <Header />
-      <NewHabit />
+      <NewHabit setHabits={setHabits} />
+
       {habits && habits.length ? "" : <NoHabit />}
 
       {habits &&

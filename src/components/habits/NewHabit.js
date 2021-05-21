@@ -1,11 +1,22 @@
+import { useState } from "react";
 import styled from "styled-components";
+import HabitMaker from "./HabitMaker";
 
-export default function NewHabit() {
+export default function NewHabit({ setHabits }) {
+  const [showHabitMaker, setShowHabitMaker] = useState(false);
+
   return (
-    <Div>
-      <P>Meus hábitos</P>
-      <Button>+</Button>
-    </Div>
+    <>
+      <Div>
+        <P>Meus hábitos</P>
+        <Button onClick={() => setShowHabitMaker(!showHabitMaker)}>+</Button>
+      </Div>
+      <HabitMaker
+        shouldShow={showHabitMaker}
+        setHabits={setHabits}
+        setShowHabitMaker={setShowHabitMaker}
+      />
+    </>
   );
 }
 
