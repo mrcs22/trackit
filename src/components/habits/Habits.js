@@ -1,18 +1,20 @@
 import UserContext from "../../contexts/UserContext";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import axios from "axios";
 
 import Header from "../Header";
 import Container from "../Container";
-import DaySummary from "./DaySummary";
-import Menu from "../Menu";
-import Habits from "./Habits";
 
-export default function Today() {
+import axios from "axios";
+
+import Menu from "../Menu";
+import NewHabit from "./NewHabit";
+import NoHabit from "./NoHabit";
+import Habit from "./Habit";
+
+export default function Habits() {
   const context = useContext(UserContext);
   const history = useHistory();
-
   const [habits, setHabits] = useState(null);
 
   if (context === null) {
@@ -20,29 +22,21 @@ export default function Today() {
     return null;
   }
 
-  const percentage = getPercentage();
-
   fetchHabits();
+  console.log(habits);
 
   return (
     <Container>
       <Header />
-      <DaySummary percentage={percentage} />
-      <Habits habits={habits} setHabits={setHabits} />
-      <Menu percentage={percentage} />
+      <NewHabit />
+      {habits && habits.length ? "" : <NoHabit />}
+
+      {habits &&
+        habits.map((h) => <Habit key={h.id} title={h.name} days={h.days} />)}
+
+      <Menu percentage={context.percentage} />
     </Container>
   );
-
-  function getPercentage() {
-    const percentage = habits
-      ? (
-          habits.reduce((a, i) => (i.done ? a + 1 : a), 0) / habits.length
-        ).toFixed(2) * 100
-      : 0;
-
-    context.percentage = percentage;
-    return percentage;
-  }
 
   function fetchHabits() {
     if (habits !== null) {
@@ -56,7 +50,7 @@ export default function Today() {
     };
 
     const promise = axios.get(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today",
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/",
       config
     );
 

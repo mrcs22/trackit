@@ -7,5 +7,5 @@ export default styled.div`
   background-color: #f2f2f2;
 
   padding: 98px 17px;
-  padding-bottom: 70px;
+  padding-bottom: 95px;
 `;

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Today from "./components/today/Today";
+import Habits from "./components/habits/Habits";
 import UserContext from "./contexts/UserContext";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           </Route>
           <Route path="/cadastro" exact component={Register} />
           <Route path="/hoje" exact component={Today} />
+          <Route path="/habitos" exact component={Habits} />
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
