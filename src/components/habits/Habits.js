@@ -32,7 +32,15 @@ export default function Habits() {
       {habits && habits.length ? "" : <NoHabit />}
 
       {habits &&
-        habits.map((h) => <Habit key={h.id} title={h.name} days={h.days} />)}
+        habits.map((h) => (
+          <Habit
+            key={h.id}
+            id={h.id}
+            title={h.name}
+            days={h.days}
+            setHabits={setHabits}
+          />
+        ))}
 
       <Menu percentage={context.percentage} />
     </Container>

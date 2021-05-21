@@ -1,11 +1,18 @@
 import styled from "styled-components";
+import UserContext from "../../contexts/UserContext";
 
-export default function Habit({ title, days }) {
+import { BsTrash } from "@react-icons/all-files/bs/BsTrash";
+import axios from "axios";
+import { useContext } from "react";
+
+export default function Habit({ title, days, id, setHabits }) {
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
+  const { token } = useContext(UserContext);
 
   return (
     <Div>
       <Title>{title}</Title>
+      <BsTrash onClick={deleteHabit} />
       {weekdays.map((w, i) => (
         <Day key={i} selected={days.includes(i)}>
           {w}
@@ -13,6 +20,20 @@ export default function Habit({ title, days }) {
       ))}
     </Div>
   );
+  function deleteHabit() {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const promise = axios.delete(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,
+      config
+    );
+
+    promise.then(() => setHabits(null));
+  }
 }
 
 const Div = styled.div`
@@ -25,6 +46,18 @@ const Div = styled.div`
 
   margin-bottom: 10px;
   padding: 13px 10px 15px 15px;
+
+  position: relative;
+
+  svg {
+    width: 16px;
+
+    color: #666;
+
+    position: absolute;
+    top: 11px;
+    right: 11px;
+  }
 `;
 
 const Title = styled.p`
